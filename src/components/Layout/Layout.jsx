@@ -1,15 +1,17 @@
+import { Container } from "../../components/Styles/Container/Container.jsx"
 import { NavLink, Outlet } from "react-router-dom"
+import { Header, LinkStyled } from "./Layout.styled.js"
 
 const Layout = () => {
   return (
-    <div>
-        <header>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="catalog">Cars Catalog</NavLink>
-          <NavLink to="favorites"> Favotites</NavLink>
-        </header>
+    <Container>
+        <Header>
+          <LinkStyled to="/">Home</LinkStyled>
+          <LinkStyled to="catalog">Cars Catalog</LinkStyled>
+          <LinkStyled to="favorites"> Favotites</LinkStyled>
+        </Header>
         <Outlet/>
-    </div>
+    </Container>
   )
 }
 

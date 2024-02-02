@@ -10,13 +10,16 @@ import {
   persistReducer,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { catalogReducer } from './catalogSlice';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  catalog: catalogReducer,
+});
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'],
+  whitelist: "",
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
