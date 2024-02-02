@@ -1,6 +1,6 @@
 import { Container } from '../../components/Styles/Container/Container.jsx'
 import React from 'react'
-import { Images, Section } from './HomePage.styled'
+import { Section } from './HomePage.styled'
 
 const HomePage = () => {
   return (

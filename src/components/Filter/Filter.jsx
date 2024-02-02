@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import makes from './makes.json';
 import prices from './prices.json';
 import {
