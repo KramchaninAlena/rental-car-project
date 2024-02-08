@@ -10,10 +10,12 @@ import {
   persistReducer,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { catalogReducer } from './catalogSlice';
+import { catalogReducer } from './Catalog/catalogSlice';
+import { filtersReducer } from './Filter/FilterSlice';
 
 const rootReducer = combineReducers({
   catalog: catalogReducer,
+  filters: filtersReducer,
 });
 
 const persistConfig = {

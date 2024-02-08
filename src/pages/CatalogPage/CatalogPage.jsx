@@ -1,18 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCatalog } from '../../redux/thunks';
+import { fetchCatalog } from '../../redux/Catalog/thunks';
 import { Container } from '../../components/Styles/Container/Container';
 import { CatalogItem, CatalogList, Img, ImgWrap, TextStyle, TitleWrap } from './CatalogPage.styled';
 import { Filter } from 'components/Filter/Filter';
 
 const CatalogPage = () => {
+  const [page, setPage] = useState(1);
+  const [isLoadMore, setIsLoadMore] = useState(false);
   const dispatch = useDispatch();
   const catalog = useSelector(state => state.catalog.cars);
-  console.log('catalog', catalog);
+  // const isLoadMore = useSelector(state => state.catalog.isLoadMore);
+  console.log('loadMore', isLoadMore);
+
+  const handleLoadMore = () => {
+    setPage(page + 1);
+
+    // scroll.scrollToBottom(268 * 2, {
+    //   duration: 250,
+    //   smooth: 'easeInOutQuint',
+    // });
+  };
+
 
   useEffect(() => {
-    dispatch(fetchCatalog());
-  }, [dispatch]);
+    dispatch(fetchCatalog({ page, limit: 12 }));
+  }, [dispatch, page]);
+
+  useEffect(() => {
+    if (catalog.length >= 12) {
+      setIsLoadMore(true)
+          }else{
+            setIsLoadMore(false)
+          }
+  }, [catalog]);
 
   return (
     <Container>
@@ -48,6 +69,8 @@ const CatalogPage = () => {
           </CatalogItem>
         ))}
       </CatalogList>
+      {isLoadMore && catalog.length > 0 && (
+      <button type='button' onClick={handleLoadMore}>Load more</button>)}
     </Container>
   );
 };

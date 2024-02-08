@@ -3,6 +3,7 @@ import { fetchCatalog } from "./thunks";
 
 const initialState = {
     cars: [],
+    // isLoadMore: false,
     
   };
   
@@ -13,6 +14,7 @@ const initialState = {
       builder
         .addCase(fetchCatalog.fulfilled, (state, action) => {
             state.cars = action.payload;
+            // state.isLoadMore = true;
         })
         // .addCase(addContact.fulfilled, handleFulfilledAdd)
         // .addCase(deleteContact.fulfilled, handleFulfilledDelete)
